@@ -1,3 +1,5 @@
+import Part from "./Part";
+
 export default function Content({
   part1,
   part2,
@@ -7,16 +9,10 @@ export default function Content({
   exercises3,
 }) {
   return (
-    <>
-      <p>
-        {part1} {exercises1}
-      </p>
-      <p>
-        {part2} {exercises2}
-      </p>
-      <p>
-        {part3} {exercises3}
-      </p>
-    </>
+    <div>
+      <Part part={part1} exercises={exercises1} />
+      <Part part={part2} exercises={exercises2} />
+      <Part part={part3} exercises={exercises3} />
+    </div>
   );
 }
