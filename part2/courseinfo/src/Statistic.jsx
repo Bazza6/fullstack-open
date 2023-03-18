@@ -1,6 +1,8 @@
 export default function Statistic({ content }) {
-  let sum = 0;
-  content.forEach((element) => (sum += element.exercises));
+  // content.forEach((element) => (sum += element.exercises));
+  const total = content.reduce((sum, part) => {
+    return sum + part.exercises;
+  }, 0);
 
-  return <p>total of {sum} exercises</p>;
+  return <p>total of {total} exercises</p>;
 }
