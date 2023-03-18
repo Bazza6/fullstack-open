@@ -14,8 +14,9 @@ const App = () => {
 
   let points = Array(8).fill(0)
 
-  const [selected, setSelected] = useState(2)
+  const [selected, setSelected] = useState(0)
   const [votes, setVotes] = useState(points)
+  const [mostVote, setMostVote] = useState(-1)
 
   const handleNext = () => {
     const aLength = anecdotes.length
@@ -27,11 +28,20 @@ const App = () => {
     let newVotes = [...votes]
     newVotes[selected]++
     setVotes(() => newVotes)
+
+    let maxPosition = 0
+    for (let i = 0; i < newVotes.length; i++) {
+      if (newVotes[i] > newVotes[maxPosition]) {
+        maxPosition = i
+      }
+    }
+    setMostVote(() => maxPosition)
   }
 
   return (
     <>
       <div>
+        <h2>Anecdote of the day</h2>
         <p>
           {anecdotes[selected]}
         </p>
@@ -41,6 +51,13 @@ const App = () => {
       </div>
       <button onClick={handleVote}>vote</button>
       <button onClick={handleNext}>next anecdote</button>
+      <h2>Anecdote with most votes</h2>
+      {mostVote >= 0 &&
+        <>
+          <p>{anecdotes[mostVote]}</p>
+          <p>has {votes[mostVote]} votes</p>
+        </>}
+
     </>
   )
 }
