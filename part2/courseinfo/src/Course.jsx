@@ -6,10 +6,10 @@ export default function Course({ courses }) {
     <>
       {courses.map((course) => {
         return (
-          <>
+          <div key={course.id}>
             <Header title={course.name} />
             <Content content={course.parts} />
-          </>
+          </div>
         );
       })}
     </>
