@@ -1,12 +1,15 @@
 import Part from "./Part";
+import Statistic from "./Statistic";
 
 export default function Content({ content }) {
-  console.log(content);
   return (
-    <ul>
-      {content.map((part) => (
-        <Part key={part.id} part={part} />
-      ))}
-    </ul>
+    <>
+      <ul>
+        {content.map((part) => (
+          <Part key={part.id} part={part} />
+        ))}
+      </ul>
+      <Statistic content={content} />
+    </>
   );
 }
