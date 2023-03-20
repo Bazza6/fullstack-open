@@ -1,18 +1,32 @@
 import { useState } from 'react'
 
 const App = () => {
-  const [persons, setPersons] = useState([
-    { name: 'Arto Hellas' }
-  ])
+  const [persons, setPersons] = useState([{ name: 'Arto Hellas' }])
   const [newName, setNewName] = useState('')
+
+  const isDuplicated = () => {
+    let found = false
+    persons.forEach(p => {
+      if (p.name === newName) {
+        alert(`${newName} is already added to phonebook`)
+        found = true
+      }
+    })
+    return found
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const newContact = {
-      name: newName
+    if (isDuplicated() === true) {
+      setNewName('')
+      return
+    } else {
+      const newContact = {
+        name: newName
+      }
+      setPersons(persons.concat(newContact))
+      setNewName('')
     }
-    setPersons(persons.concat(newContact))
-    setNewName('')
   }
 
   return (
