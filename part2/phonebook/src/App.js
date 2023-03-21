@@ -1,10 +1,12 @@
+import axios from 'axios'
+import { useEffect } from 'react'
 import { useState } from 'react'
 import AddUser from './AddUser'
 import FilterInput from './FilterInput'
 import UserDetails from './UserDetails'
 
 const App = () => {
-  const [persons, setPersons] = useState([{ name: 'Arto Hellas', number: 659595555 }])
+  const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
@@ -35,6 +37,14 @@ const App = () => {
       setNewNumber('')
     }
   }
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:3001/persons')
+      .then(response => {
+        setPersons(response.data)
+      })
+  }, [])
 
   return (
     <div>
