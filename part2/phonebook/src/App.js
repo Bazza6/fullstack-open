@@ -4,8 +4,8 @@ import { useState } from 'react'
 import AddUser from './AddUser'
 import FilterInput from './FilterInput'
 import UserDetails from './UserDetails'
-
 const App = () => {
+  const url = 'http://localhost:3002/persons'
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
@@ -32,7 +32,12 @@ const App = () => {
         name: newName,
         number: newNumber
       }
-      setPersons(persons.concat(newContact))
+      axios
+        .post(url, newContact)
+        .then(response => {
+          setPersons(persons.concat(response.data))
+
+        })
       setNewName('')
       setNewNumber('')
     }
@@ -40,12 +45,13 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/persons')
+      .get(url)
       .then(response => {
         setPersons(response.data)
       })
   }, [])
 
+  console.log('persons', persons)
   return (
     <div>
       <h2>Phonebook</h2>
