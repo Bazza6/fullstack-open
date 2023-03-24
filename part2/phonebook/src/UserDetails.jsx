@@ -6,11 +6,11 @@ export default function UserDetails({ person, persons, setPersons }) {
     setPersons([...persons].filter((p) => p.id !== person.id));
   };
   return (
-    <div>
+    <li>
       <span>
         {person.name} {person.number}
       </span>
       <button onClick={handleClick}>delete</button>
-    </div>
+    </li>
   );
 }

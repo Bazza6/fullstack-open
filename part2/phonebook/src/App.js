@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import AddUser from './AddUser'
 import FilterInput from './FilterInput'
+import Notification from './Notification'
 import { addPerson, getPersons, updatePerson } from './services/persons'
 import UserDetails from './UserDetails'
 const App = () => {
@@ -9,6 +10,7 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
+  const [notification, setNotification] = useState(null)
 
   const isDuplicated = () => {
     let found = false
@@ -28,6 +30,10 @@ const App = () => {
         const updatedObj = { ...duplicated[0], number: newNumber }
         updatePerson(duplicated[0].id, updatedObj);
         setPersons(persons.map(p => p.name === newName ? updatedObj : p))
+        setNotification(`${newName} number updated correctly`)
+        setTimeout(() => {
+          setNotification(null)
+        }, 2000)
       }
     } else {
       const newContact = {
@@ -36,6 +42,10 @@ const App = () => {
       }
       addPerson(newContact).then((response) => {
         setPersons(persons.concat(response))
+        setNotification(`${newName} added correctly`)
+        setTimeout(() => {
+          setNotification(null)
+        }, 2000)
       })
     }
     setNewName('')
@@ -51,7 +61,8 @@ const App = () => {
 
   return (
     <div>
-      <h2>Phonebook</h2>
+      <h1>Phonebook</h1>
+      <Notification message={notification} />
       <FilterInput filter={filter} setFilter={setFilter} />
       <h2>add a new</h2>
       <AddUser
@@ -62,7 +73,7 @@ const App = () => {
         setNewNumber={setNewNumber}
       />
       <h2>Numbers</h2>
-      <div>
+      <ul>
         {persons
           .filter(word => word.name.toUpperCase().includes(filter.toUpperCase()))
           .map((person) => {
@@ -74,7 +85,7 @@ const App = () => {
                 setPersons={setPersons}
               />)
           })}
-      </div>
+      </ul>
     </div>
   )
 }
