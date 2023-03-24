@@ -12,3 +12,7 @@ export function addPerson(obj) {
         return response.data
     })
 }
+
+export function deletePerson(id) {
+    return axios.delete(`${baseUrl}/${id}`)
+}

@@ -64,7 +64,16 @@ const App = () => {
       <div>
         {persons
           .filter(word => word.name.toUpperCase().includes(filter.toUpperCase()))
-          .map((person) => <UserDetails key={person.name} person={person} ></UserDetails>)}</div>
+          .map((person) => {
+            return (
+              <UserDetails
+                key={person.name}
+                person={person}
+                persons={persons}
+                setPersons={setPersons}
+              />)
+          })}
+      </div>
     </div>
   )
 }
