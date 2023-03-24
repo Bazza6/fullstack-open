@@ -5,7 +5,6 @@ export default function UserDetails({ person, persons, setPersons }) {
     deletePerson(person.id);
     setPersons([...persons].filter((p) => p.id !== person.id));
   };
-  console.log("sss:", persons);
   return (
     <div>
       <span>
