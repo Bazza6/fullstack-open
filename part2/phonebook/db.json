@@ -16,11 +16,6 @@
       "id": 3
     },
     {
-      "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
-      "id": 4
-    },
-    {
       "name": "nazareno",
       "number": "0000",
       "id": 5
@@ -36,34 +31,14 @@
       "id": 7
     },
     {
-      "name": "Mandy",
-      "number": "",
+      "name": "MANDY",
+      "number": "32451243223",
       "id": 8
     },
     {
-      "name": "Xasdfefwe",
-      "number": "43524352",
-      "id": 9
-    },
-    {
       "name": "hola",
-      "number": "2333",
-      "id": 10
-    },
-    {
-      "name": "sdfasd",
-      "number": "",
-      "id": 11
-    },
-    {
-      "name": "mario",
-      "number": "13232",
-      "id": 13
-    },
-    {
-      "name": "mandi",
-      "number": "23452452",
-      "id": 14
+      "number": "324234",
+      "id": 9
     }
   ]
 }

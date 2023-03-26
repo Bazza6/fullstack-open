@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
 import AddUser from './AddUser'
+import Error from './Error'
 import FilterInput from './FilterInput'
 import Notification from './Notification'
 import { addPerson, getPersons, updatePerson } from './services/persons'
@@ -11,6 +12,7 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
   const [notification, setNotification] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
 
   const isDuplicated = () => {
     let found = false
@@ -63,6 +65,7 @@ const App = () => {
     <div>
       <h1>Phonebook</h1>
       <Notification message={notification} />
+      <Error message={errorMessage} />
       <FilterInput filter={filter} setFilter={setFilter} />
       <h2>add a new</h2>
       <AddUser
@@ -83,6 +86,8 @@ const App = () => {
                 person={person}
                 persons={persons}
                 setPersons={setPersons}
+                setErrorMessage={setErrorMessage}
+                setNotification={setNotification}
               />)
           })}
       </ul>
