@@ -42,13 +42,21 @@ const App = () => {
         name: newName,
         number: newNumber
       }
-      addPerson(newContact).then((response) => {
-        setPersons(persons.concat(response))
-        setNotification(`${newName} added correctly`)
-        setTimeout(() => {
-          setNotification(null)
-        }, 2000)
-      })
+      addPerson(newContact)
+        .then((response) => {
+          setPersons(persons.concat(response))
+          setNotification(`${newName} added correctly`)
+          setTimeout(() => {
+            setNotification(null)
+          }, 2000)
+        })
+        .catch(error => {
+          setErrorMessage(`${error.response.data.error}`)
+          setTimeout(() => {
+            setErrorMessage(null)
+          }, 3000)
+        })
+
     }
     setNewName('')
     setNewNumber('')
@@ -67,7 +75,7 @@ const App = () => {
       <Notification message={notification} />
       <Error message={errorMessage} />
       <FilterInput filter={filter} setFilter={setFilter} />
-      <h2>add a new</h2>
+      <h2>Add a new</h2>
       <AddUser
         handleSubmit={handleSubmit}
         newName={newName}
