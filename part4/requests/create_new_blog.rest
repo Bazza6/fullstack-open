@@ -1,0 +1,9 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+    "title": "Learn Node.js in 30 seconds!!!",
+    "author": "Aldo Giovanni e Giacomo",
+    "url": "https://www.google.com/",
+    "likes": 5
+}
