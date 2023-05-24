@@ -2,8 +2,8 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-    "title": "Learn Node.js in 30 seconds!!!",
-    "author": "Aldo Giovanni e Giacomo",
+    "title": "Learn cactus now",
+    "author": "Xavier",
     "url": "https://www.google.com/",
-    "likes": 5
+    "likes": 100
 }
